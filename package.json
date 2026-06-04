@@ -1,0 +1,37 @@
+{
+  "name": "ai-workflow-agent-skills",
+  "version": "0.1.0",
+  "description": "Vendor-neutral Agent Skills for AI coding workflows.",
+  "type": "module",
+  "bin": {
+    "agent-skills": "./bin/agent-skills.mjs",
+    "ai-workflow-agent-skills": "./bin/agent-skills.mjs"
+  },
+  "files": [
+    "skills",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "agent-skills",
+    "ai-agents",
+    "coding-agents",
+    "pi-package",
+    "claude-code",
+    "codex"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "list": "node bin/agent-skills.mjs list",
+    "check": "node bin/agent-skills.mjs list"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  }
+}
