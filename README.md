@@ -9,12 +9,15 @@ This repository is meant to be installed as a reusable skills package, not copie
 | Skill | Purpose |
 | --- | --- |
 | `docs-structure` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
+| `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 
 ## Repository Layout
 
 ```text
 skills/
   docs-structure/
+    SKILL.md
+  frame-opportunity/
     SKILL.md
 bin/
   agent-skills.mjs
@@ -110,7 +113,7 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/docs-structure "$DEST/"
+mkdir -p "$DEST" && cp -R skills/frame-opportunity "$DEST/"
 ```
 
 Common destinations:
