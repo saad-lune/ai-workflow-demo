@@ -146,7 +146,7 @@ be labeled `assumed` or `unproven`.
 
 If the concept depends on major unresolved market demand, competitor,
 regulatory, integration, technical capability, AI reliability, or customer
-evidence, use `research-more` guidance and route to `discovery-research`.
+evidence, use `research-more` guidance and route to `opportunity-research`.
 
 If the core uncertainty is experiential or technical feasibility that discussion
 and research cannot resolve, use `prototype` guidance and recommend a prototype
