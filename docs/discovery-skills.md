@@ -14,7 +14,7 @@ handoffs into PRD creation.
 raw idea
   -> opportunity-framing
   -> opportunity-research
-  -> working-backwards, optional
+  -> validate-concept, optional
   -> discovery-readiness-review
   -> PRD authoring
 ```
@@ -163,10 +163,12 @@ not a generic report generator; it exists to improve the next product decision.
 - Matt Pocock [`zoom-out`](https://github.com/mattpocock/skills/blob/main/skills/engineering/zoom-out/SKILL.md):
   explain local code in broader system context.
 
-## 3. working-backwards
+## 3. validate-concept
 
-**Purpose:** Stress-test whether the concept is compelling before turning it
-into a PRD. This is optional, but valuable for strategic product bets.
+**Purpose:** Validate whether a concept is compelling enough to use as an input
+to PRD authoring. This is optional, but valuable for strategic product bets.
+The method is Working Backwards / PRFAQ-inspired: write the future announcement,
+test customer and internal objections, and produce guidance for product authors.
 
 **Use when:**
 
@@ -174,6 +176,7 @@ into a PRD. This is optional, but valuable for strategic product bets.
 - The idea is executive-facing, resource-heavy, ambiguous, or easy to overbuild.
 - The team has a solution but the customer value is still fuzzy.
 - A bland PRD would hide weak thinking instead of resolving it.
+- The product team wants concept validation guidance before drafting a PRD.
 
 **Primary outputs:**
 
@@ -193,8 +196,8 @@ into a PRD. This is optional, but valuable for strategic product bets.
    finance, or leadership would ask.
 5. Identify claims that are not yet defensible.
 6. Reframe or narrow the concept until the claim is credible.
-7. End with a verdict: proceed, narrow, research more, prototype, park, or
-   reject.
+7. End with guidance for PRD authoring: proceed, narrow, research more,
+   prototype, park, or reject.
 
 **Example:**
 
@@ -214,7 +217,7 @@ Working-backwards reframing:
 
 ```text
 Launch an evidence-backed manager attention briefing that tells engineering
-managers what changed, what is blocked, and what needs attention, with every
+managers what changed, what is stalled, and what needs attention, with every
 claim linked to source evidence.
 ```
 
@@ -310,10 +313,10 @@ Build in this order:
 1. `opportunity-framing`
 2. `opportunity-research`
 3. `discovery-readiness-review`
-4. `working-backwards`
+4. `validate-concept`
 
 This order gives the team a usable discovery workflow quickly.
-`working-backwards` is powerful, but it is less foundational than framing and
+`validate-concept` is powerful, but it is less foundational than framing and
 research. It can be added once the team has used the first two skills on real
 ideas.
 
