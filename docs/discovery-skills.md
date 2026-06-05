@@ -13,7 +13,7 @@ handoffs into PRD creation.
 ```text
 raw idea
   -> opportunity-framing
-  -> discovery-research
+  -> opportunity-research
   -> working-backwards, optional
   -> discovery-readiness-review
   -> PRD authoring
@@ -87,7 +87,7 @@ a form.
 - Matt Pocock [`grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md):
   one question at a time until shared understanding.
 
-## 2. discovery-research
+## 2. opportunity-research
 
 **Purpose:** Ground the opportunity in current evidence before PRD authoring.
 This skill answers "what must we learn before deciding what to build?"
@@ -308,7 +308,7 @@ risk.
 Build in this order:
 
 1. `opportunity-framing`
-2. `discovery-research`
+2. `opportunity-research`
 3. `discovery-readiness-review`
 4. `working-backwards`
 
