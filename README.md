@@ -11,6 +11,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 | `docs-structure` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
 | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 | `opportunity-research` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
+| `validate-concept` | Optional Working Backwards / PRFAQ-style concept validation guidance before PRD authoring. |
 
 ## Repository Layout
 
@@ -22,6 +23,10 @@ skills/
     SKILL.md
   opportunity-research/
     SKILL.md
+    references/
+  validate-concept/
+    SKILL.md
+    assets/
     references/
 bin/
   agent-skills.mjs
@@ -95,7 +100,7 @@ Agents: `generic`, `claude`, `codex`, `pi`, or `all`.
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills docs-structure,frame-opportunity,opportunity-research
+npx ai-workflow-agent-skills install --agents claude --skills docs-structure,frame-opportunity,opportunity-research,validate-concept
 ```
 
 Use symlinks while developing locally:
@@ -117,7 +122,7 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/docs-structure skills/frame-opportunity skills/opportunity-research "$DEST/"
+mkdir -p "$DEST" && cp -R skills/docs-structure skills/frame-opportunity skills/opportunity-research skills/validate-concept "$DEST/"
 ```
 
 Common destinations:
