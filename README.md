@@ -113,7 +113,8 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/* "$DEST/"
+mkdir -p "$DEST" && cp -R skills/docs-structure "$DEST/"
+cp -R skills/frame-opportunity "$DEST/"
 ```
 
 Common destinations:
