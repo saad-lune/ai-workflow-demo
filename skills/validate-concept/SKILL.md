@@ -1,11 +1,9 @@
 ---
 name: validate-concept
 description: >-
-  Discovery-phase concept validation before PRD authoring. Use when the user
-  wants to validate a concept, stress-test an idea, work backwards, create or
-  review a PRFAQ, draft a future announcement, pressure-test customer/internal
-  FAQs, challenge fuzzy customer value, or produce concept verdict guidance on
-  whether to proceed, narrow, research more, prototype, park, or reject.
+  Validate product concepts before PRDs. Use for PRFAQ-style stress tests,
+  fuzzy customer value, future announcements, FAQs, or proceed, narrow,
+  research, prototype, park, or reject guidance.
 ---
 
 # Validate Concept

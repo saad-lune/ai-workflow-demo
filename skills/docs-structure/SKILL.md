@@ -1,12 +1,9 @@
 ---
 name: docs-structure
 description: >-
-  Repository documentation routing and information architecture for durable
-  product/feature docs. Use when deciding where initiatives, PRDs, epics,
-  stories, context, architecture, standards, UX/design, engineering notes,
-  QA/acceptance verification, or readiness reviews belong. Enforces durable
-  feature work under initiative -> PRD. Routes artifacts only; do not create or
-  draft docs unless explicitly requested.
+  Route durable repo docs and product artifacts. Use to decide where initiatives,
+  PRDs, epics, stories, architecture, standards, UX, QA, or readiness reviews
+  belong.
 ---
 
 # Repository Docs Structure
