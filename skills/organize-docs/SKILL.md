@@ -1,5 +1,5 @@
 ---
-name: docs-structure
+name: organize-docs
 description: >-
   Repository documentation routing and information architecture for durable
   product/feature docs. Use when deciding where initiatives, PRDs, epics,
@@ -9,7 +9,7 @@ description: >-
   draft docs unless explicitly requested.
 ---
 
-# Repository Docs Structure
+# Organize Docs
 
 Determine where durable repository docs belong and how they relate.
 

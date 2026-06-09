@@ -4,7 +4,7 @@ This document captures the recommended discovery-phase skills for an AI-native
 product and engineering SDLC. It is a reference for building the skills one by
 one, not a replacement for each skill's eventual `SKILL.md`.
 
-The existing `docs-structure` skill owns artifact routing. These discovery
+The existing `organize-docs` skill owns artifact routing. These discovery
 skills should own the thinking workflow, artifact contents, review gates, and
 handoffs into PRD creation.
 
@@ -12,18 +12,18 @@ handoffs into PRD creation.
 
 ```text
 raw idea
-  -> opportunity-framing
-  -> opportunity-research
-  -> validate-concept, optional
+  -> frame-opportunity
+  -> research-opportunity
+  -> stress-test-opportunity, optional
   -> discovery-readiness-review
   -> PRD authoring
 ```
 
 Use the flow flexibly. A small, obvious improvement may only need
-`opportunity-framing`. A strategic product bet may need all four discovery
+`frame-opportunity`. A strategic product bet may need all four discovery
 steps before a PRD is safe to write.
 
-## 1. opportunity-framing
+## 1. frame-opportunity
 
 **Purpose:** Turn a raw idea into a clear opportunity brief and decide whether
 the idea deserves durable SDLC treatment.
@@ -87,7 +87,7 @@ a form.
 - Matt Pocock [`grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md):
   one question at a time until shared understanding.
 
-## 2. opportunity-research
+## 2. research-opportunity
 
 **Purpose:** Ground the opportunity in current evidence before PRD authoring.
 This skill answers "what must we learn before deciding what to build?"
@@ -163,7 +163,7 @@ not a generic report generator; it exists to improve the next product decision.
 - Matt Pocock [`zoom-out`](https://github.com/mattpocock/skills/blob/main/skills/engineering/zoom-out/SKILL.md):
   explain local code in broader system context.
 
-## 3. validate-concept
+## 3. stress-test-opportunity
 
 **Purpose:** Validate whether a concept is compelling enough to use as an input
 to PRD authoring. This is optional, but valuable for strategic product bets.
@@ -310,19 +310,19 @@ risk.
 
 Build in this order:
 
-1. `opportunity-framing`
-2. `opportunity-research`
+1. `frame-opportunity`
+2. `research-opportunity`
 3. `discovery-readiness-review`
-4. `validate-concept`
+4. `stress-test-opportunity`
 
 This order gives the team a usable discovery workflow quickly.
-`validate-concept` is powerful, but it is less foundational than framing and
+`stress-test-opportunity` is powerful, but it is less foundational than framing and
 research. It can be added once the team has used the first two skills on real
 ideas.
 
-## Relationship To docs-structure
+## Relationship To organize-docs
 
-`docs-structure` decides where artifacts belong. Discovery skills should call
+`organize-docs` decides where artifacts belong. Discovery skills should call
 on that routing convention, but they should not duplicate the routing table.
 
 Recommended durable discovery location:

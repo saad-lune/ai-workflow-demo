@@ -1,5 +1,5 @@
 ---
-name: opportunity-research
+name: research-opportunity
 description: >-
   Product opportunity research for validating opportunities before PRD authoring.
   Use when a product idea, opportunity brief, initiative, or PRD input depends
@@ -8,7 +8,7 @@ description: >-
   risks, and PRD implications. Does not write PRDs or create initiatives.
 ---
 
-# Opportunity Research
+# Research Opportunity
 
 Ground a product opportunity in evidence before PRD authoring.
 
@@ -37,7 +37,7 @@ but once a PRD exists, the PRD is the implementation source of truth.
    initiative docs, existing discovery/research, PRDs, design docs, repo docs,
    and user-provided evidence.
 2. If no opportunity brief exists, support lightweight standalone research.
-   If durable product context is missing, recommend `opportunity-framing`.
+   If durable product context is missing, recommend `frame-opportunity`.
 3. Ask only unresolved questions needed to define objective, scope, constraints,
    or access to private evidence.
 4. Choose and state the depth:
