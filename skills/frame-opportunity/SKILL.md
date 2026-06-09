@@ -43,7 +43,7 @@ after the opportunity is clear enough to preserve.
 1. Orient on context.
    - If an existing opportunity brief is targeted, read it first and determine
      whether the task is create, update, or review.
-   - Inspect local docs and initiatives when available. Use `docs-structure`
+   - Inspect local docs and initiatives when available. Use `organize-docs`
      for routing decisions when that skill is available.
    - Ask for the user's brain dump and any source material. After the initial
      dump, ask "anything else I should know before I start tightening this?"

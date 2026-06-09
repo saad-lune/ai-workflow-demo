@@ -1,14 +1,14 @@
 ---
-name: validate-concept
+name: stress-test-opportunity
 description: >-
-  Discovery-phase concept validation before PRD authoring. Use when the user
-  wants to validate a concept, stress-test an idea, work backwards, create or
+  Discovery-phase opportunity stress testing before PRD authoring. Use when the user
+  wants to stress-test an opportunity, validate a concept, work backwards, create or
   review a PRFAQ, draft a future announcement, pressure-test customer/internal
   FAQs, challenge fuzzy customer value, or produce concept verdict guidance on
   whether to proceed, narrow, research more, prototype, park, or reject.
 ---
 
-# Validate Concept
+# Stress Test Opportunity
 
 Validate a product concept through Working Backwards / PRFAQ-style pressure
 testing before PRD authoring. This skill is optional. It is most useful for
@@ -62,7 +62,7 @@ If no opportunity brief exists, run a short intake for only:
 
 If the user cannot name a specific customer, describe a concrete painful
 problem, or is exploring multiple unrelated ideas, stop and recommend
-`opportunity-framing`.
+`frame-opportunity`.
 
 ## Modes
 
@@ -103,10 +103,10 @@ not skip these decisions:
 
 ## Workflow
 
-1. **Orient**: inspect relevant repo docs and source context. Use `docs-structure`
+1. **Orient**: inspect relevant repo docs and source context. Use `organize-docs`
    for routing decisions rather than duplicating initiative/path rules.
 2. **Intake check**: establish concept type, customer, problem, stakes, and rough
-   concept. Route to `opportunity-framing` if the idea is too raw.
+   concept. Route to `frame-opportunity` if the idea is too raw.
 3. **Materials check**: ask whether additional existing materials should inform
    validation.
 4. **Press release**: draft the future announcement in conversation and test
@@ -146,7 +146,7 @@ be labeled `assumed` or `unproven`.
 
 If the concept depends on major unresolved market demand, competitor,
 regulatory, integration, technical capability, AI reliability, or customer
-evidence, use `research-more` guidance and route to `opportunity-research`.
+evidence, use `research-more` guidance and route to `research-opportunity`.
 
 If the core uncertainty is experiential or technical feasibility that discussion
 and research cannot resolve, use `prototype` guidance and recommend a prototype
