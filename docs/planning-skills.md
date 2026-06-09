@@ -7,10 +7,10 @@ workflow:
 discovery -> planning -> design -> architecture -> build / code -> QA / Validate -> Ship
 ```
 
-Discovery is already covered by the current skills. The next package should
-focus on turning discovery outputs into a PRD-quality product plan and a clean
-handoff to design and architecture. Planning should not produce final UX specs,
-architecture decisions, implementation tasks, code, or QA artifacts.
+Discovery is already covered by the current skills. Planning focuses on turning
+discovery outputs into a PRD-quality product plan and a clean handoff to design
+and architecture. Planning should not produce final UX specs, architecture
+decisions, implementation tasks, code, or QA artifacts.
 
 ## Source Review
 
@@ -28,7 +28,7 @@ for inspection.
 ## Planning Flow
 
 ```text
-discovery/readiness-review.md
+docs/initiatives/initiative-###-slug/qa/readiness-review.md, optional
   -> planning/prds/prd-###-slug/prd.md
   -> planning/prds/prd-###-slug/prd-review.md
   -> planning/prds/prd-###-slug/roadmap.md, optional
@@ -38,10 +38,13 @@ discovery/readiness-review.md
 
 Small work may only need `author-prd` and a lightweight `review-prd`. Larger or
 strategic work should add `plan-roadmap` before design and architecture.
+Use `organize-docs` for exact placement when it is available; otherwise map the
+same artifacts onto the repo's existing convention.
 
 ## 1. author-prd
 
-**Purpose:** Turn discovery-ready product thinking into a durable PRD package.
+**Purpose:** Turn discovery-ready product thinking into a durable PRD package
+for design and architecture handoff.
 
 **Use when:**
 
@@ -64,20 +67,45 @@ docs/initiatives/initiative-###-slug/planning/prds/prd-###-slug/addendum.md, opt
    PRFAQ, concept verdict, readiness review, and any supplied source material.
 2. Detect intent: create a new PRD, update an existing PRD, or resume an
    unfinished draft.
-3. Ask for a final product brain dump and any source docs that were not already
+3. Use a soft readiness gate: proceed if user, problem, evidence/assumptions,
+   scope, non-goals, and success signals are clear enough; otherwise route to
+   the appropriate discovery skill.
+4. Ask for a final product brain dump and any source docs that were not already
    visible.
-4. Calibrate rigor to stakes: small internal improvement, internal tool,
-   launch-facing feature, platform capability, compliance need, or strategic
-   bet.
-5. Draft the PRD around product intent: user, problem, goals, non-goals, scope,
-   requirements, acceptance outcomes, constraints, risks, open questions, and
-   handoff notes.
-6. Keep implementation detail, deep UX, architecture decisions, rejected
-   alternatives, and source overflow in the addendum unless required to define
-   product scope.
-7. Record major decisions, assumptions, conflicts, and overrides in the
-   decision log as they happen.
-8. Stop with clear design and architecture handoff notes.
+5. Use coached mode by default for unclear or high-stakes work, asking one
+   product decision at a time with a recommended answer; use fast mode only when
+   requested or source material is strong.
+6. Calibrate rigor to stakes: small internal improvement, internal tool,
+   launch-facing feature, platform capability, compliance need, AI/automation
+   feature, or strategic bet.
+7. Draft the PRD around product intent: user, problem, goals, non-goals, scope,
+   success metrics, value slices, requirements, acceptance outcomes,
+   cross-cutting requirements, open questions, and handoff notes.
+8. Group functional requirements under Value Slices (`VS-N`) while preserving
+   globally stable requirement IDs (`FR-N`). Include lightweight user journeys
+   (`UJ-N`) when they clarify UX or workflow.
+9. Keep implementation detail, deep UX, architecture decisions, rejected
+   alternatives, source overflow, and launch/GTM depth in the addendum unless
+   required to define product scope.
+10. Record major decisions, assumptions, conflicts, overrides, and status
+   changes in the decision log as they happen.
+11. Stop with design handoff notes when relevant and product-facing
+   architecture/engineering handoff notes for every PRD.
+12. Ask before marking the PRD `handoff-ready`; unresolved blockers before
+   handoff prevent that status.
+
+**Handoff-ready bar:**
+
+- source inputs listed
+- user/customer, problem, goals, non-goals, and product perimeter clear
+- at least one Value Slice with functional requirements and acceptance outcomes
+- success metrics or success signals present
+- cross-cutting requirements handled or explicitly not applicable
+- design handoff present or explicitly not applicable with rationale
+- product-facing architecture/engineering handoff present
+- blockers before handoff resolved
+- material decisions and assumptions recorded in `decision-log.md`
+- user explicitly approves the status change
 
 **Reference patterns:**
 
