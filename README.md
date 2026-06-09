@@ -12,6 +12,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 | `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
 | `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
+| `author-prd` | Planning-phase PRD authoring and updating from discovery inputs into `prd.md`, `decision-log.md`, and optional `addendum.md` for design and architecture handoff. |
 
 ## Repository Layout
 
@@ -27,6 +28,9 @@ skills/
   stress-test-opportunity/
     SKILL.md
     assets/
+    references/
+  author-prd/
+    SKILL.md
     references/
 bin/
   agent-skills.mjs
@@ -100,7 +104,7 @@ Agents: `generic`, `claude`, `codex`, `pi`, or `all`.
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills organize-docs,frame-opportunity,research-opportunity,stress-test-opportunity
+npx ai-workflow-agent-skills install --agents claude --skills organize-docs,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd
 ```
 
 Use symlinks while developing locally:
@@ -122,7 +126,7 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/organize-docs skills/frame-opportunity skills/research-opportunity skills/stress-test-opportunity "$DEST/"
+mkdir -p "$DEST" && cp -R skills/organize-docs skills/frame-opportunity skills/research-opportunity skills/stress-test-opportunity skills/author-prd "$DEST/"
 ```
 
 Common destinations:
