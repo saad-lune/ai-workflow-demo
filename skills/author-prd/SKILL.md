@@ -1,12 +1,11 @@
 ---
 name: author-prd
 description: >-
-  Create and update planning-phase PRDs from discovery inputs. Use when asked to
-  draft, refine, resume, or convert opportunity briefs, research, PRFAQ/concept
-  verdicts, readiness reviews, or source material into prd.md plus
-  decision-log.md and optional addendum.md for design/architecture handoff.
-  Stops before review, roadmapping, UX specs, architecture, epics, stories,
-  tasks, or code.
+  Create or update planning-phase PRDs from discovery inputs. Use when
+  converting opportunity briefs, research, PRFAQs, concept verdicts, readiness
+  reviews, or source material into prd.md, decision-log.md, and optional
+  addendum.md. Stops before review, roadmapping, UX, architecture, delivery
+  planning, or code.
 ---
 
 # Author PRD

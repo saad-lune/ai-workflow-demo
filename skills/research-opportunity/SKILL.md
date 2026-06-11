@@ -1,11 +1,10 @@
 ---
 name: research-opportunity
 description: >-
-  Product opportunity research for validating opportunities before PRD authoring.
-  Use when a product idea, opportunity brief, initiative, or PRD input depends
-  on market, customer, domain, technical, regulatory, integration, AI capability,
-  design, or codebase assumptions. Produces product-focused evidence, confidence,
-  risks, and PRD implications. Does not write PRDs or create initiatives.
+  Research product opportunities before PRD authoring. Use when an idea,
+  opportunity brief, initiative, or PRD input depends on market, customer,
+  domain, technical, regulatory, integration, AI, design, or codebase
+  assumptions. Produces evidence, confidence, risks, and PRD implications.
 ---
 
 # Research Opportunity

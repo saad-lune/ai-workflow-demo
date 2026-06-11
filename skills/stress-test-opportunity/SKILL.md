@@ -1,11 +1,10 @@
 ---
 name: stress-test-opportunity
 description: >-
-  Discovery-phase opportunity stress testing before PRD authoring. Use when the user
-  wants to stress-test an opportunity, validate a concept, work backwards, create or
-  review a PRFAQ, draft a future announcement, pressure-test customer/internal
-  FAQs, challenge fuzzy customer value, or produce concept verdict guidance on
-  whether to proceed, narrow, research more, prototype, park, or reject.
+  Stress-test product opportunities before PRD authoring. Use when validating a
+  concept, working backwards, creating or reviewing a PRFAQ, drafting a future
+  announcement, pressure-testing FAQs, challenging fuzzy customer value, or
+  producing concept verdict guidance.
 ---
 
 # Stress Test Opportunity

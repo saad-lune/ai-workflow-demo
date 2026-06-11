@@ -1,12 +1,10 @@
 ---
 name: frame-opportunity
 description: >-
-  Conversation-first opportunity framing for product, design, engineering,
-  strategy, and product-team users. Use when someone has a raw idea, asks
-  whether something is worth building, needs to decide where to start, wants to
-  classify ambiguous early-stage work, or asks to create, update, or review a
-  PRD-preparatory opportunity brief before research, prototyping, PRD authoring,
-  parking, or rejecting an idea.
+  Frame raw or ambiguous product opportunities before research or PRD work. Use
+  when a user has an idea, needs to decide where to start, wants to classify
+  early-stage work, or asks to create or update a PRD-preparatory opportunity
+  brief.
 ---
 
 # Frame Opportunity

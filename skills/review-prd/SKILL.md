@@ -2,9 +2,9 @@
 name: review-prd
 description: >-
   Critique draft PRDs for readiness before design and architecture. Use for
-  critique-only PRD reviews, blocker findings, dimension verdicts, reviewer
-  status, and next-step recommendations; preview before saving prd-review.md
-  unless write/save or headless mode is explicit.
+  PRD reviews, blocker findings, dimension verdicts, reviewer status, and
+  next-step recommendations. Preview before saving prd-review.md unless write,
+  save, or headless mode is explicit.
 ---
 
 # Review PRD
