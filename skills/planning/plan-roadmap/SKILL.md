@@ -2,11 +2,9 @@
 name: plan-roadmap
 description: >-
   Create, update, or review product roadmaps from an approved PRD. Use for
-  release plans, launch plans, phased rollouts, V1/V2 splits, milestone
-  sequencing, scope deferral, post-estimate updates, or requirement-to-release
-  traceability. Produces release slices for design, architecture, launch, and
-  operations handoff. Not for raw ideas, discovery artifacts, implementation
-  plans, epics, stories, tickets, or code.
+  release plans, launch plans, phased rollouts, V1/V2 sequencing, scope
+  deferral, post-estimate updates, or requirement-to-release traceability. Stops
+  before epics, stories, tickets, tasks, or code.
 ---
 
 # Plan Roadmap

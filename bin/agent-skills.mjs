@@ -48,8 +48,9 @@ function usage(exitCode = 0) {
   console.log(`Usage:
   agent-skills setup
   agent-skills list
+  agent-skills list-categories
   agent-skills list-agents
-  agent-skills install --agents <${names}|all> [--location global|project] [--skills <name|all>] [--mode copy|symlink] [--dir <path>] [--force] [--dry-run]
+  agent-skills install --agents <${names}|all> [--location global|project] [--categories <category|all>] [--skills <name|all>] [--mode copy|symlink] [--dir <path>] [--force] [--dry-run]
 
 Agents:
   generic  global ~/.agents/skills        project ./.agents/skills
@@ -61,9 +62,11 @@ Examples:
   npx ai-workflow-agent-skills
   npx ai-workflow-agent-skills setup
   npx ai-workflow-agent-skills list
+  npx ai-workflow-agent-skills list-categories
   npx ai-workflow-agent-skills list-agents
   npx ai-workflow-agent-skills install --agents generic
   npx ai-workflow-agent-skills install --agents claude,codex --location project
+  npx ai-workflow-agent-skills install --agents codex --categories discovery,planning
   npx ai-workflow-agent-skills install --agents claude --location project --skills organize-docs
   npx ai-workflow-agent-skills install --dir ~/.codex/skills --mode symlink
 `);
@@ -75,7 +78,10 @@ function parseArgs(argv) {
     command: argv[0],
     agents: undefined,
     location: undefined,
+    categories: undefined,
+    categoriesSpecified: false,
     skills: 'all',
+    skillsSpecified: false,
     mode: 'copy',
     dir: undefined,
     force: false,
@@ -89,7 +95,16 @@ function parseArgs(argv) {
     if (arg === '--dry-run' || arg === '-n') { opts.dryRun = true; continue; }
     if (arg === '--agents' || arg === '-a') { opts.agents = requireValue(argv, ++i, arg); continue; }
     if (arg === '--location' || arg === '-l') { opts.location = requireValue(argv, ++i, arg).toLowerCase(); continue; }
-    if (arg === '--skills' || arg === '--skill' || arg === '-s') { opts.skills = requireValue(argv, ++i, arg); continue; }
+    if (arg === '--categories' || arg === '--category' || arg === '-c') {
+      opts.categories = requireValue(argv, ++i, arg);
+      opts.categoriesSpecified = true;
+      continue;
+    }
+    if (arg === '--skills' || arg === '--skill' || arg === '-s') {
+      opts.skills = requireValue(argv, ++i, arg);
+      opts.skillsSpecified = true;
+      continue;
+    }
     if (arg === '--mode' || arg === '-m') { opts.mode = requireValue(argv, ++i, arg); continue; }
     if (arg === '--dir' || arg === '-d') { opts.dir = expandHome(requireValue(argv, ++i, arg)); continue; }
     fail(`Unknown argument: ${arg}`);
@@ -119,13 +134,51 @@ function fail(message) {
   process.exit(1);
 }
 
-function listSkills() {
+function discoverSkills() {
   if (!fs.existsSync(skillsRoot)) fail(`Missing skills directory: ${skillsRoot}`);
-  return fs.readdirSync(skillsRoot, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .filter((name) => fs.existsSync(path.join(skillsRoot, name, 'SKILL.md')))
-    .sort();
+  const skills = [];
+
+  function visit(dir) {
+    const skillFile = path.join(dir, 'SKILL.md');
+    if (fs.existsSync(skillFile)) {
+      const relativePath = path.relative(skillsRoot, dir);
+      const parts = relativePath.split(path.sep).filter(Boolean);
+      const name = parts.at(-1);
+      const category = parts.length > 1 ? parts.slice(0, -1).join('/') : 'uncategorized';
+      skills.push({ name, category, source: dir, relativePath });
+      return;
+    }
+
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) visit(path.join(dir, entry.name));
+    }
+  }
+
+  visit(skillsRoot);
+
+  const byName = new Map();
+  for (const skill of skills) {
+    const matches = byName.get(skill.name) ?? [];
+    matches.push(skill);
+    byName.set(skill.name, matches);
+  }
+
+  for (const [name, matches] of byName) {
+    if (matches.length > 1) {
+      const locations = matches.map((skill) => skill.relativePath).join(', ');
+      fail(`Duplicate skill name "${name}" found in: ${locations}`);
+    }
+  }
+
+  return skills.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
+}
+
+function listCategories(registry = discoverSkills()) {
+  return [...new Set(registry.map((skill) => skill.category))].sort();
+}
+
+function formatSkill(skill) {
+  return skill.category === 'uncategorized' ? skill.name : `${skill.category}/${skill.name}`;
 }
 
 function resolveAgent(name) {
@@ -157,24 +210,87 @@ function resolveInstallAgents(agentNames, location) {
   return selected;
 }
 
-function resolveSelectedSkills(skillsValue) {
-  const allSkills = listSkills();
-  const rawSkills = splitSelections(skillsValue);
-  if (rawSkills.length === 0 || rawSkills.some((skill) => skill.toLowerCase() === 'all')) return allSkills;
+function resolveSelectedCategories(categoriesValue, registry) {
+  const categories = listCategories(registry);
+  const rawCategories = splitSelections(categoriesValue);
+  if (rawCategories.length === 0 || rawCategories.some((category) => category.toLowerCase() === 'all')) return categories;
 
   const selected = [];
-  for (const rawSkill of rawSkills) {
-    if (!allSkills.includes(rawSkill)) fail(`Unknown skill: ${rawSkill}`);
-    if (!selected.includes(rawSkill)) selected.push(rawSkill);
+  for (const rawCategory of rawCategories) {
+    const category = categories.find((item) => item.toLowerCase() === rawCategory.toLowerCase());
+    if (!category) fail(`Unknown category: ${rawCategory}. Use one of: ${categories.join(', ')}, or all.`);
+    if (!selected.includes(category)) selected.push(category);
   }
   return selected;
 }
 
-function installSkill(name, destinationRoot, mode, force, dryRun) {
-  const source = path.join(skillsRoot, name);
-  const destination = path.join(destinationRoot, name);
+function selectSkillsByCategory(registry, categories) {
+  return registry.filter((skill) => categories.includes(skill.category));
+}
 
-  if (!fs.existsSync(source)) fail(`Unknown skill: ${name}`);
+function resolveSelectedSkills(opts, registry = discoverSkills()) {
+  const selected = new Map();
+
+  if (opts.categoriesSpecified) {
+    for (const skill of selectSkillsByCategory(registry, resolveSelectedCategories(opts.categories, registry))) {
+      selected.set(skill.name, skill);
+    }
+  }
+
+  const rawSkills = splitSelections(opts.skills);
+  const shouldSelectAllSkills = rawSkills.length === 0 || rawSkills.some((skill) => skill.toLowerCase() === 'all');
+  if (!opts.categoriesSpecified && shouldSelectAllSkills) {
+    for (const skill of registry) selected.set(skill.name, skill);
+    return [...selected.values()];
+  }
+
+  if (opts.skillsSpecified && shouldSelectAllSkills) {
+    if (!opts.categoriesSpecified) {
+      for (const skill of registry) selected.set(skill.name, skill);
+    }
+    return [...selected.values()];
+  }
+
+  if (opts.skillsSpecified) {
+    for (const rawSkill of rawSkills) {
+      if (rawSkill.endsWith('/*')) {
+        const category = rawSkill.slice(0, -2);
+        for (const skill of selectSkillsByCategory(registry, resolveSelectedCategories(category, registry))) {
+          selected.set(skill.name, skill);
+        }
+        continue;
+      }
+
+      const skill = findSkill(rawSkill, registry);
+      selected.set(skill.name, skill);
+    }
+  }
+
+  if (selected.size === 0) {
+    for (const skill of registry) selected.set(skill.name, skill);
+  }
+
+  return [...selected.values()];
+}
+
+function findSkill(value, registry) {
+  const normalized = value.toLowerCase();
+  const matches = registry.filter((skill) => {
+    return skill.name.toLowerCase() === normalized
+      || formatSkill(skill).toLowerCase() === normalized
+      || skill.relativePath.toLowerCase() === normalized;
+  });
+
+  if (matches.length === 0) fail(`Unknown skill: ${value}`);
+  if (matches.length > 1) fail(`Ambiguous skill: ${value}. Use category/name.`);
+  return matches[0];
+}
+
+function installSkill(skill, destinationRoot, mode, force, dryRun) {
+  const source = skill.source;
+  const destination = path.join(destinationRoot, skill.name);
+
+  if (!fs.existsSync(source)) fail(`Unknown skill source: ${source}`);
 
   const action = mode === 'symlink' ? 'Symlink' : 'Copy';
   console.log(`${dryRun ? '[dry-run] ' : ''}${action} ${source} -> ${destination}`);
@@ -206,17 +322,16 @@ async function setup(opts) {
     console.log('AI Workflow Agent Skills setup');
     console.log('This will copy or symlink selected skills into agent-specific skills directories.\n');
 
-    const skills = listSkills();
-    console.log(`Available skills: ${skills.join(', ')}\n`);
+    const registry = discoverSkills();
+    console.log(`Available categories: ${listCategories(registry).join(', ')}`);
+    console.log(`Available skills: ${registry.map(formatSkill).join(', ')}\n`);
 
     const location = opts.location ?? await promptLocation(rl);
     const selectedAgents = opts.agents
       ? resolveInstallAgents(opts.agents, location)
       : await promptAgents(rl, location);
     const mode = await promptMode(rl, opts.mode);
-    const selectedSkills = opts.skills === 'all' && skills.length === 1
-      ? skills
-      : await promptSkills(rl, skills, opts.skills);
+    const selectedSkills = await promptInstallSkills(rl, opts, registry);
 
     let force = opts.force;
     const conflicts = findConflicts(selectedAgents, selectedSkills);
@@ -233,7 +348,7 @@ async function setup(opts) {
     for (const agent of selectedAgents) {
       console.log(`- ${agent.label}: ${agent.dir}`);
     }
-    console.log(`- Skills: ${selectedSkills.join(', ')}`);
+    console.log(`- Skills: ${selectedSkills.map(formatSkill).join(', ')}`);
     console.log(`- Mode: ${mode}`);
     console.log(`- Replace existing: ${force ? 'yes' : 'no'}`);
     console.log(`- Dry run: ${dryRun ? 'yes' : 'no'}`);
@@ -309,28 +424,73 @@ async function promptMode(rl, defaultMode) {
   }
 }
 
+async function promptInstallSkills(rl, opts, registry) {
+  if (opts.skillsSpecified || opts.categoriesSpecified) return resolveSelectedSkills(opts, registry);
+
+  const selectedCategories = await promptCategories(rl, registry);
+  const categorySkills = selectSkillsByCategory(registry, selectedCategories);
+  if (await promptYesNo(rl, '\nInstall all skills from selected categories?', true)) return categorySkills;
+
+  return promptSkills(rl, categorySkills, 'all');
+}
+
+async function promptCategories(rl, registry) {
+  const categories = listCategories(registry);
+
+  console.log('\nAvailable categories:');
+  categories.forEach((category, index) => {
+    const skillCount = registry.filter((skill) => skill.category === category).length;
+    console.log(`  ${index + 1}) ${category} (${skillCount} skills)`);
+  });
+  console.log('  all) All categories');
+
+  while (true) {
+    const answer = (await rl.question('\nSelect categories by number/name, comma-separated [all]: ')).trim();
+    const rawSelections = answer ? splitSelections(answer) : ['all'];
+    if (rawSelections.some((item) => item.toLowerCase() === 'all')) return categories;
+
+    const selected = [];
+    for (const raw of rawSelections) {
+      const byIndex = Number(raw);
+      const category = Number.isInteger(byIndex) && byIndex >= 1 && byIndex <= categories.length
+        ? categories[byIndex - 1]
+        : categories.find((item) => item.toLowerCase() === raw.toLowerCase());
+      if (!category) {
+        console.log(`Unknown category: ${raw}`);
+        selected.length = 0;
+        break;
+      }
+      if (!selected.includes(category)) selected.push(category);
+    }
+
+    if (selected.length > 0) return selected;
+  }
+}
+
 async function promptSkills(rl, skills, defaultSkills) {
   if (skills.length === 1) return skills;
 
   console.log('\nAvailable skills:');
-  skills.forEach((skill, index) => console.log(`  ${index + 1}) ${skill}`));
+  skills.forEach((skill, index) => console.log(`  ${index + 1}) ${formatSkill(skill)}`));
   console.log('  all) All skills');
 
   while (true) {
     const answer = (await rl.question(`Select skills by number/name, comma-separated [${defaultSkills}]: `)).trim();
     const rawSelections = answer ? splitSelections(answer) : splitSelections(defaultSkills);
-    if (rawSelections.includes('all')) return skills;
+    if (rawSelections.some((item) => item.toLowerCase() === 'all')) return skills;
 
     const selected = [];
     for (const raw of rawSelections) {
       const byIndex = Number(raw);
-      const skill = Number.isInteger(byIndex) && byIndex >= 1 && byIndex <= skills.length ? skills[byIndex - 1] : raw;
-      if (!skills.includes(skill)) {
+      const skill = Number.isInteger(byIndex) && byIndex >= 1 && byIndex <= skills.length
+        ? skills[byIndex - 1]
+        : skills.find((item) => item.name.toLowerCase() === raw.toLowerCase() || formatSkill(item).toLowerCase() === raw.toLowerCase());
+      if (!skill) {
         console.log(`Unknown skill: ${raw}`);
         selected.length = 0;
         break;
       }
-      if (!selected.includes(skill)) selected.push(skill);
+      if (!selected.some((item) => item.name === skill.name)) selected.push(skill);
     }
 
     if (selected.length > 0) return selected;
@@ -345,7 +505,7 @@ function findConflicts(agents, skills) {
   const conflicts = [];
   for (const agent of agents) {
     for (const skill of skills) {
-      const destination = path.join(agent.dir, skill);
+      const destination = path.join(agent.dir, skill.name);
       if (fs.existsSync(destination)) conflicts.push(destination);
     }
   }
@@ -374,7 +534,12 @@ async function main() {
   if (opts.command === '--help' || opts.command === '-h') usage(0);
 
   if (opts.command === 'list' || opts.command === 'list-skills') {
-    for (const skill of listSkills()) console.log(skill);
+    for (const skill of discoverSkills()) console.log(formatSkill(skill));
+    return;
+  }
+
+  if (opts.command === 'list-categories') {
+    for (const category of listCategories()) console.log(category);
     return;
   }
 
@@ -397,7 +562,7 @@ async function main() {
   }
 
   const location = opts.location ?? 'global';
-  const selectedSkills = resolveSelectedSkills(opts.skills);
+  const selectedSkills = resolveSelectedSkills(opts);
 
   if (opts.dir) {
     for (const skill of selectedSkills) installSkill(skill, opts.dir, opts.mode, opts.force, opts.dryRun);
