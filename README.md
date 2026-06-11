@@ -6,39 +6,42 @@ This repository is meant to be installed as a reusable skills package, not copie
 
 ## Skills
 
-| Skill | Purpose |
-| --- | --- |
-| `organize-docs` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
-| `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
-| `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
-| `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
-| `author-prd` | Planning-phase PRD authoring and updating from discovery inputs into `prd.md`, `decision-log.md`, and optional `addendum.md` for design and architecture handoff. |
-| `review-prd` | Critique-only PRD readiness review before design and architecture, with blocker findings, dimension verdicts, and next-step guidance. |
-| `plan-roadmap` | Product roadmap, release-slice, phased rollout, launch plan, and requirement traceability planning from an approved PRD. |
+| Category | Skill | Purpose |
+| --- | --- | --- |
+| `docs` | `organize-docs` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
+| `discovery` | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
+| `discovery` | `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
+| `discovery` | `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
+| `planning` | `author-prd` | Planning-phase PRD authoring and updating from discovery inputs into `prd.md`, `decision-log.md`, and optional `addendum.md` for design and architecture handoff. |
+| `planning` | `review-prd` | Critique-only PRD readiness review before design and architecture, with blocker findings, dimension verdicts, and next-step guidance. |
+| `planning` | `plan-roadmap` | Product roadmap, release-slice, phased rollout, launch plan, and requirement traceability planning from an approved PRD. |
 
 ## Repository Layout
 
 ```text
 skills/
-  organize-docs/
-    SKILL.md
-  frame-opportunity/
-    SKILL.md
-  research-opportunity/
-    SKILL.md
-    references/
-  stress-test-opportunity/
-    SKILL.md
-    assets/
-    references/
-  author-prd/
-    SKILL.md
-    references/
-  review-prd/
-    SKILL.md
-    references/
-  plan-roadmap/
-    SKILL.md
+  discovery/
+    frame-opportunity/
+      SKILL.md
+    research-opportunity/
+      SKILL.md
+      references/
+    stress-test-opportunity/
+      SKILL.md
+      assets/
+      references/
+  docs/
+    organize-docs/
+      SKILL.md
+  planning/
+    author-prd/
+      SKILL.md
+      references/
+    review-prd/
+      SKILL.md
+      references/
+    plan-roadmap/
+      SKILL.md
 bin/
   agent-skills.mjs
 package.json
@@ -60,7 +63,8 @@ From npm after publishing:
 pi install npm:ai-workflow-agent-skills
 ```
 
-Pi reads the `pi.skills` package manifest and loads skills from `./skills`.
+Pi reads the `pi.skills` package manifest and loads skills from each category
+directory under `./skills`.
 
 ## Install with npx / npm
 
@@ -88,7 +92,9 @@ The walkthrough lets you choose:
 1. install location: global/user or project-local
 2. one or more agents
 3. copy or symlink mode
-4. whether to replace existing installs
+4. one or more skill categories
+5. all skills in those categories or specific skills
+6. whether to replace existing installs
 
 | Agent | Global/user location | Project-local location |
 | --- | --- | --- |
@@ -108,10 +114,28 @@ npx ai-workflow-agent-skills install --agents all --location project
 
 Agents: `generic`, `claude`, `codex`, `pi`, or `all`.
 
+Install all skills in selected categories:
+
+```bash
+npx ai-workflow-agent-skills install --agents codex --categories discovery,planning
+```
+
 Install selected skills only:
 
 ```bash
 npx ai-workflow-agent-skills install --agents claude --skills organize-docs,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap
+```
+
+Mix selected categories and individual skills:
+
+```bash
+npx ai-workflow-agent-skills install --agents codex --categories discovery --skills author-prd
+```
+
+Select skills by category-qualified name or wildcard:
+
+```bash
+npx ai-workflow-agent-skills install --agents codex --skills 'planning/author-prd,discovery/*'
 ```
 
 Use symlinks while developing locally:
@@ -124,8 +148,12 @@ List available skills/agents:
 
 ```bash
 npx ai-workflow-agent-skills list-skills
+npx ai-workflow-agent-skills list-categories
 npx ai-workflow-agent-skills list-agents
 ```
+
+Installed skill directories remain flat for agent compatibility, even though
+source skills are grouped by category.
 
 ## Manual Install
 
@@ -133,7 +161,7 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/organize-docs skills/frame-opportunity skills/research-opportunity skills/stress-test-opportunity skills/author-prd skills/review-prd skills/plan-roadmap "$DEST/"
+mkdir -p "$DEST" && cp -R skills/docs/organize-docs skills/discovery/frame-opportunity skills/discovery/research-opportunity skills/discovery/stress-test-opportunity skills/planning/author-prd skills/planning/review-prd skills/planning/plan-roadmap "$DEST/"
 ```
 
 Common destinations:
