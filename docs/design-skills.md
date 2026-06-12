@@ -16,6 +16,14 @@ is written as an isolated generation brief: a future agent should be able to
 create that single `SKILL.md` from the section without needing to read the whole
 category plan.
 
+## Implementation Status
+
+`scope-ux` and `author-ux` were implemented on 2026-06-12 at
+`skills/design/scope-ux/SKILL.md` and `skills/design/author-ux/SKILL.md`.
+The canonical behavior for implemented skills lives in the skill files; this
+document remains a roadmap/reference for remaining design skills until the
+category is complete.
+
 ## Source Review
 
 Reviewed on 2026-06-11. Local copies were originally reviewed for the design
@@ -911,7 +919,7 @@ planning/prds/prd-###-slug/ux/ux-review.md
 
 ## Package Updates When Implementing
 
-When the first design skill is implemented:
+When adding or updating design skills:
 
 - Add `./skills/design` to `package.json` under `pi.skills`.
 - Update `README.md` skill table and repository layout.

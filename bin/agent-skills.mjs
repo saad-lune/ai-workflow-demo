@@ -66,7 +66,7 @@ Examples:
   npx ai-workflow-agent-skills list-agents
   npx ai-workflow-agent-skills install --agents generic
   npx ai-workflow-agent-skills install --agents claude,codex --location project
-  npx ai-workflow-agent-skills install --agents codex --categories discovery,planning
+  npx ai-workflow-agent-skills install --agents codex --categories discovery,planning,design
   npx ai-workflow-agent-skills install --agents claude --location project --skills organize-docs
   npx ai-workflow-agent-skills install --dir ~/.codex/skills --mode symlink
 `);
