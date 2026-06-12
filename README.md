@@ -9,6 +9,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 | Category | Skill | Purpose |
 | --- | --- | --- |
 | `docs` | `organize-docs` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
+| `design` | `review-ux` | Critique UX specs, UX slice files, and design contracts before architecture or implementation, with package coverage, slice readiness, traceability, accessibility, responsive, and design-system findings. |
 | `discovery` | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 | `discovery` | `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
 | `discovery` | `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
@@ -20,6 +21,10 @@ This repository is meant to be installed as a reusable skills package, not copie
 
 ```text
 skills/
+  design/
+    review-ux/
+      SKILL.md
+      references/
   discovery/
     frame-opportunity/
       SKILL.md
@@ -123,7 +128,7 @@ npx ai-workflow-agent-skills install --agents codex --categories discovery,plann
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills organize-docs,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap
+npx ai-workflow-agent-skills install --agents claude --skills organize-docs,review-ux,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap
 ```
 
 Mix selected categories and individual skills:
@@ -161,7 +166,7 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/docs/organize-docs skills/discovery/frame-opportunity skills/discovery/research-opportunity skills/discovery/stress-test-opportunity skills/planning/author-prd skills/planning/review-prd skills/planning/plan-roadmap "$DEST/"
+mkdir -p "$DEST" && cp -R skills/docs/organize-docs skills/design/review-ux skills/discovery/frame-opportunity skills/discovery/research-opportunity skills/discovery/stress-test-opportunity skills/planning/author-prd skills/planning/review-prd skills/planning/plan-roadmap "$DEST/"
 ```
 
 Common destinations:
