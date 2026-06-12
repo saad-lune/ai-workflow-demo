@@ -18,10 +18,11 @@ category plan.
 
 ## Implementation Status
 
-`scope-ux` was implemented on 2026-06-12 at
-`skills/design/scope-ux/SKILL.md`. The canonical behavior for implemented skills
-lives in the skill files; this document remains a roadmap/reference for
-remaining design skills until the category is complete.
+`scope-ux` and `author-ux` were implemented on 2026-06-12 at
+`skills/design/scope-ux/SKILL.md` and `skills/design/author-ux/SKILL.md`.
+The canonical behavior for implemented skills lives in the skill files; this
+document remains a roadmap/reference for remaining design skills until the
+category is complete.
 
 ## Source Review
 
@@ -914,7 +915,7 @@ planning/prds/prd-###-slug/ux/ux-review.md
 
 ## Package Updates When Implementing
 
-When the first design skill is implemented:
+When adding or updating design skills:
 
 - Add `./skills/design` to `package.json` under `pi.skills`.
 - Update `README.md` skill table and repository layout.

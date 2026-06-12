@@ -13,6 +13,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 | `discovery` | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 | `discovery` | `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
 | `discovery` | `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
+| `design` | `author-ux` | UX design contract authoring for scoped UX slices or small PRDs, including flows, surfaces, states, microcopy, responsive behavior, accessibility, and architecture handoff. |
 | `planning` | `author-prd` | Planning-phase PRD authoring and updating from discovery inputs into `prd.md`, `decision-log.md`, and optional `addendum.md` for design and architecture handoff. |
 | `planning` | `review-prd` | Critique-only PRD readiness review before design and architecture, with blocker findings, dimension verdicts, and next-step guidance. |
 | `planning` | `plan-roadmap` | Product roadmap, release-slice, phased rollout, launch plan, and requirement traceability planning from an approved PRD. |
@@ -22,6 +23,9 @@ This repository is meant to be installed as a reusable skills package, not copie
 ```text
 skills/
   design/
+    author-ux/
+      SKILL.md
+      references/
     scope-ux/
       SKILL.md
       references/
@@ -128,19 +132,19 @@ npx ai-workflow-agent-skills install --agents codex --categories discovery,plann
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills organize-docs,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap,scope-ux
+npx ai-workflow-agent-skills install --agents claude --skills scope-ux,author-ux,author-prd,review-prd
 ```
 
 Mix selected categories and individual skills:
 
 ```bash
-npx ai-workflow-agent-skills install --agents codex --categories discovery --skills author-prd
+npx ai-workflow-agent-skills install --agents codex --categories discovery --skills author-prd,author-ux
 ```
 
 Select skills by category-qualified name or wildcard:
 
 ```bash
-npx ai-workflow-agent-skills install --agents codex --skills 'planning/author-prd,discovery/*'
+npx ai-workflow-agent-skills install --agents codex --skills 'planning/author-prd,discovery/*,design/*'
 ```
 
 Use symlinks while developing locally:
@@ -166,7 +170,8 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/docs/organize-docs skills/design/scope-ux skills/discovery/frame-opportunity skills/discovery/research-opportunity skills/discovery/stress-test-opportunity skills/planning/author-prd skills/planning/review-prd skills/planning/plan-roadmap "$DEST/"
+mkdir -p "$DEST"
+for skill in skills/*/*; do [ -f "$skill/SKILL.md" ] && cp -R "$skill" "$DEST/"; done
 ```
 
 Common destinations:
