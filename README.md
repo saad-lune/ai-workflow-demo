@@ -9,6 +9,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 | Category | Skill | Purpose |
 | --- | --- | --- |
 | `docs` | `organize-docs` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
+| `design` | `scope-ux` | Design-phase PRD scoping into UX slices, surface inventory, PRD-to-UX traceability, release assumptions, design order, and next-slice handoff. |
 | `discovery` | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 | `discovery` | `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
 | `discovery` | `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
@@ -23,6 +24,9 @@ This repository is meant to be installed as a reusable skills package, not copie
 skills/
   design/
     author-ux/
+      SKILL.md
+      references/
+    scope-ux/
       SKILL.md
       references/
   discovery/
@@ -128,7 +132,7 @@ npx ai-workflow-agent-skills install --agents codex --categories discovery,plann
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills author-ux,author-prd,review-prd
+npx ai-workflow-agent-skills install --agents claude --skills scope-ux,author-ux,author-prd,review-prd
 ```
 
 Mix selected categories and individual skills:
