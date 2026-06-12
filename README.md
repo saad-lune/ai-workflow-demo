@@ -12,6 +12,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 | `design` | `author-design-system` | Repository-level design-system authoring for Google-spec `DESIGN.md`, visual identity rules, tokens, typography, color, spacing, shapes, and reusable component visual guidance. |
 | `design` | `scope-ux` | Design-phase PRD scoping into UX slices, surface inventory, PRD-to-UX traceability, release assumptions, design order, and next-slice handoff. |
 | `design` | `author-ux` | UX design contract authoring for scoped UX slices or small PRDs, including flows, surfaces, states, microcopy, responsive behavior, accessibility, and architecture handoff. |
+| `design` | `explore-ux` | UX exploration for unresolved IA, layout, visual, responsive, accessibility, state, or interaction decisions before canonical UX or design-system updates. |
 | `discovery` | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 | `discovery` | `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
 | `discovery` | `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
@@ -28,6 +29,9 @@ skills/
       SKILL.md
       references/
     author-ux/
+      SKILL.md
+      references/
+    explore-ux/
       SKILL.md
       references/
     scope-ux/
@@ -136,13 +140,13 @@ npx ai-workflow-agent-skills install --agents codex --categories discovery,plann
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills scope-ux,author-ux,author-design-system,author-prd,review-prd
+npx ai-workflow-agent-skills install --agents claude --skills scope-ux,author-ux,explore-ux,author-design-system,author-prd,review-prd
 ```
 
 Mix selected categories and individual skills:
 
 ```bash
-npx ai-workflow-agent-skills install --agents codex --categories discovery --skills author-prd,author-ux
+npx ai-workflow-agent-skills install --agents codex --categories discovery,design --skills author-prd
 ```
 
 Select skills by category-qualified name or wildcard:

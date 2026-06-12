@@ -454,6 +454,10 @@ Require explicit user approval before setting `ready-for-architecture`.
 
 ## 3. explore-ux
 
+**Implementation status:** Implemented on 2026-06-12 at
+`skills/design/explore-ux/SKILL.md` by user request, before the recommended
+build-order predecessors in this roadmap.
+
 **Proposed path:**
 
 ```text
@@ -921,6 +925,9 @@ When adding or updating design skills:
 - Update `README.md` skill table and repository layout.
 - Update manual install examples if they remain exhaustive.
 - Run `npm run check` and confirm the installer discovers the new design skills.
+
+Status: completed for `explore-ux` on 2026-06-12. Repeat the README updates and
+validation when adding the remaining design skills.
 
 ## Anti-Patterns
 
