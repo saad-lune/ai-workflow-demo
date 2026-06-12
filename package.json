@@ -33,6 +33,7 @@
     "skills": [
       "./skills/design",
       "./skills/discovery",
+      "./skills/design",
       "./skills/docs",
       "./skills/planning"
     ]
