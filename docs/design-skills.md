@@ -16,6 +16,14 @@ is written as an isolated generation brief: a future agent should be able to
 create that single `SKILL.md` from the section without needing to read the whole
 category plan.
 
+## Implementation Status
+
+`scope-ux` and `author-ux` were implemented on 2026-06-12 at
+`skills/design/scope-ux/SKILL.md` and `skills/design/author-ux/SKILL.md`.
+The canonical behavior for implemented skills lives in the skill files; this
+document remains a roadmap/reference for remaining design skills until the
+category is complete.
+
 ## Source Review
 
 Reviewed on 2026-06-11. Local copies were originally reviewed for the design
@@ -445,6 +453,10 @@ Require explicit user approval before setting `ready-for-architecture`.
 - Matt Pocock `grill-me`: one unresolved decision at a time.
 
 ## 3. explore-ux
+
+**Implementation status:** Implemented on 2026-06-12 at
+`skills/design/explore-ux/SKILL.md` by user request, before the recommended
+build-order predecessors in this roadmap.
 
 **Proposed path:**
 
@@ -907,12 +919,15 @@ planning/prds/prd-###-slug/ux/ux-review.md
 
 ## Package Updates When Implementing
 
-When the first design skill is implemented:
+When adding or updating design skills:
 
 - Add `./skills/design` to `package.json` under `pi.skills`.
 - Update `README.md` skill table and repository layout.
 - Update manual install examples if they remain exhaustive.
 - Run `npm run check` and confirm the installer discovers the new design skills.
+
+Status: completed for `explore-ux` on 2026-06-12. Repeat the README updates and
+validation when adding the remaining design skills.
 
 ## Anti-Patterns
 
