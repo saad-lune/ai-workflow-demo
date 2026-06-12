@@ -9,6 +9,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 | Category | Skill | Purpose |
 | --- | --- | --- |
 | `docs` | `organize-docs` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
+| `design` | `scope-ux` | Design-phase PRD scoping into UX slices, surface inventory, PRD-to-UX traceability, release assumptions, design order, and next-slice handoff. |
 | `discovery` | `frame-opportunity` | Conversation-first opportunity framing for raw ideas, ambiguous early-stage work, opportunity briefs, and PRD-preparatory next-step recommendations. |
 | `discovery` | `research-opportunity` | Product opportunity research for validating market, customer, domain, technical, design, and codebase assumptions before PRD authoring. |
 | `discovery` | `stress-test-opportunity` | Optional Working Backwards / PRFAQ-style opportunity stress testing before PRD authoring. |
@@ -20,6 +21,10 @@ This repository is meant to be installed as a reusable skills package, not copie
 
 ```text
 skills/
+  design/
+    scope-ux/
+      SKILL.md
+      references/
   discovery/
     frame-opportunity/
       SKILL.md
@@ -117,13 +122,13 @@ Agents: `generic`, `claude`, `codex`, `pi`, or `all`.
 Install all skills in selected categories:
 
 ```bash
-npx ai-workflow-agent-skills install --agents codex --categories discovery,planning
+npx ai-workflow-agent-skills install --agents codex --categories discovery,planning,design
 ```
 
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills organize-docs,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap
+npx ai-workflow-agent-skills install --agents claude --skills organize-docs,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap,scope-ux
 ```
 
 Mix selected categories and individual skills:
@@ -161,7 +166,7 @@ Prefer the installer above. If copying manually, choose a destination from the t
 
 ```bash
 DEST=~/.agents/skills
-mkdir -p "$DEST" && cp -R skills/docs/organize-docs skills/discovery/frame-opportunity skills/discovery/research-opportunity skills/discovery/stress-test-opportunity skills/planning/author-prd skills/planning/review-prd skills/planning/plan-roadmap "$DEST/"
+mkdir -p "$DEST" && cp -R skills/docs/organize-docs skills/design/scope-ux skills/discovery/frame-opportunity skills/discovery/research-opportunity skills/discovery/stress-test-opportunity skills/planning/author-prd skills/planning/review-prd skills/planning/plan-roadmap "$DEST/"
 ```
 
 Common destinations:
