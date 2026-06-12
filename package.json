@@ -32,6 +32,7 @@
   "pi": {
     "skills": [
       "./skills/discovery",
+      "./skills/design",
       "./skills/docs",
       "./skills/planning"
     ]
