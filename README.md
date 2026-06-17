@@ -8,6 +8,7 @@ This repository is meant to be installed as a reusable skills package, not copie
 
 | Category | Skill | Purpose |
 | --- | --- | --- |
+| `architecture` | `author-erd` | Architecture-stage Engineering Requirements Doc authoring from PRDs, UX specs, codebase architecture evidence, and engineering decisions before review or implementation planning. |
 | `docs` | `organize-docs` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
 | `design` | `author-design-system` | Repository-level design-system authoring for Google-spec `DESIGN.md`, visual identity rules, tokens, typography, color, spacing, shapes, and reusable component visual guidance. |
 | `design` | `scope-ux` | Design-phase PRD scoping into UX slices, surface inventory, PRD-to-UX traceability, release assumptions, design order, and next-slice handoff. |
@@ -25,6 +26,10 @@ This repository is meant to be installed as a reusable skills package, not copie
 
 ```text
 skills/
+  architecture/
+    author-erd/
+      SKILL.md
+      references/
   design/
     author-design-system/
       SKILL.md
@@ -138,13 +143,13 @@ Agents: `generic`, `claude`, `codex`, `pi`, or `all`.
 Install all skills in selected categories:
 
 ```bash
-npx ai-workflow-agent-skills install --agents codex --categories discovery,planning,design
+npx ai-workflow-agent-skills install --agents codex --categories discovery,planning,design,architecture
 ```
 
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills organize-docs,scope-ux,author-ux,review-ux,explore-ux,author-design-system,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap
+npx ai-workflow-agent-skills install --agents claude --skills organize-docs,scope-ux,author-ux,review-ux,explore-ux,author-design-system,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap,author-erd
 ```
 
 Mix selected categories and individual skills:
@@ -156,7 +161,7 @@ npx ai-workflow-agent-skills install --agents codex --categories discovery,desig
 Select skills by category-qualified name or wildcard:
 
 ```bash
-npx ai-workflow-agent-skills install --agents codex --skills 'planning/author-prd,discovery/*,design/*'
+npx ai-workflow-agent-skills install --agents codex --skills 'planning/author-prd,discovery/*,design/*,architecture/*'
 ```
 
 Use symlinks while developing locally:
