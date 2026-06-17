@@ -13,6 +13,14 @@ The architecture stage sits here:
 discovery -> PRD -> UX -> codebase architecture map, when brownfield -> ERD -> implementation planning -> build / code -> QA -> ship
 ```
 
+## Implementation Status
+
+`map-codebase-architecture` was implemented on 2026-06-18 at
+`skills/architecture/map-codebase-architecture/SKILL.md`. The canonical
+behavior for implemented skills lives in the skill files; this document remains
+a roadmap/reference for remaining architecture skills until the category is
+complete.
+
 ## Source References
 
 Reviewed on 2026-06-17. Local snapshots are in `.context/source-repos/`.

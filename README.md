@@ -8,6 +8,8 @@ This repository is meant to be installed as a reusable skills package, not copie
 
 | Category | Skill | Purpose |
 | --- | --- | --- |
+| `architecture` | `map-codebase-architecture` | Brownfield codebase architecture mapping before ERD authoring, with PRD-scoped evidence about systems, APIs, data, observability, tests, deployment, risks, and ERD questions. |
+| `architecture` | `author-erd` | Architecture-stage Engineering Requirements Doc authoring from PRDs, UX specs, codebase architecture evidence, and engineering decisions before review or implementation planning. |
 | `architecture` | `review-erd` | Critique Engineering Requirements Docs before implementation planning, with PRD/UX/codebase-map gates, architecture, data, API, security, observability, testing, rollout, specialist-review, and blocker findings. |
 | `docs` | `organize-docs` | Repository documentation routing and information architecture for context, architecture, standards, initiatives, PRDs, epics, stories, QA, and readiness artifacts. |
 | `design` | `author-design-system` | Repository-level design-system authoring for Google-spec `DESIGN.md`, visual identity rules, tokens, typography, color, spacing, shapes, and reusable component visual guidance. |
@@ -27,6 +29,12 @@ This repository is meant to be installed as a reusable skills package, not copie
 ```text
 skills/
   architecture/
+    map-codebase-architecture/
+      SKILL.md
+      references/
+    author-erd/
+      SKILL.md
+      references/
     review-erd/
       SKILL.md
       references/
@@ -149,13 +157,13 @@ npx ai-workflow-agent-skills install --agents codex --categories discovery,plann
 Install selected skills only:
 
 ```bash
-npx ai-workflow-agent-skills install --agents claude --skills organize-docs,scope-ux,author-ux,review-ux,explore-ux,author-design-system,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap,review-erd
+npx ai-workflow-agent-skills install --agents claude --skills organize-docs,scope-ux,author-ux,review-ux,explore-ux,author-design-system,frame-opportunity,research-opportunity,stress-test-opportunity,author-prd,review-prd,plan-roadmap,map-codebase-architecture,author-erd,review-erd
 ```
 
 Mix selected categories and individual skills:
 
 ```bash
-npx ai-workflow-agent-skills install --agents codex --categories discovery,design --skills author-prd
+npx ai-workflow-agent-skills install --agents codex --categories discovery,design,architecture --skills author-prd
 ```
 
 Select skills by category-qualified name or wildcard:
