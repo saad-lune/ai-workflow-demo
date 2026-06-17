@@ -45,6 +45,30 @@ stories, issues, QA artifacts, or code.
 10. Use `.context/plan-roadmap-notes.md` only for long-run resume notes. Never
    treat `.context` notes as durable artifacts or source of truth.
 
+## Conversation Stance
+
+Use conversation to align on sequencing decisions before writing a roadmap:
+
+1. Restate the PRD goal, current readiness gates, obvious committed scope,
+   deferred scope, and sequencing risks before asking questions.
+2. Ask the user to supply or confirm real constraints: launch commitments,
+   stakeholder promises, pilots, estimates, dependencies, risk tolerance, and
+   any scope that must not move.
+3. Ask one sequencing question at a time only when the answer changes release
+   slices, V1 boundaries, dependencies, or roadmap confidence. Include options
+   and a recommended answer when defensible. State what evidence would change
+   the recommendation.
+4. Make trade-offs explicit: user value, dependency order, risk burn-down,
+   validation learning, launch readiness, and design/architecture readiness.
+5. When sequencing is not obvious, present 2-3 release strategies such as
+   minimal viable, risk burn-down, and ideal rollout. Ask the user to approve
+   the strategy before writing the final slice map.
+6. Do not invent dates, owners, approvals, or estimates to make the roadmap look
+   complete. Label missing inputs and choose whether they block sequencing.
+7. Before saving or overwriting `roadmap.md`, preview the scope split, slice
+   map, traceability gaps, readiness overrides, and decisions that need user
+   confirmation.
+
 ## Inputs And Gates
 
 Default PRD package shape:

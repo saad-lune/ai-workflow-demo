@@ -33,6 +33,28 @@ stories, tickets, tests, or code.
 7. Preview before writing unless the user explicitly asks to write, save,
    update, headless, or run autonomously.
 
+## Conversation Stance
+
+Use conversation to align on design boundaries before creating UX slices:
+
+1. Restate the product goal, UX-relevant actors, known surfaces, release
+   assumptions, and likely slice boundaries before asking for decisions.
+2. Ask for missing context that affects UX scope: primary workflow, critical
+   states, permissions, platforms, operational constraints, existing UI
+   conventions, and design-system obligations.
+3. Ask one scoping question at a time only when the answer changes slice
+   boundaries, design order, product traceability, or downstream ownership.
+   State what evidence would change the recommended split.
+4. Offer concrete split options and a recommended split when the PRD supports
+   one. Explain the trade-off in user-goal terms, not route or component terms.
+5. For broad scope, present 2-3 plausible slice strategies, such as user-goal
+   first, risk-first, or release-first, and ask the user to approve the strategy
+   before writing the durable map.
+6. Treat uncertainty visibly: clean gates produce normal scope, weak PRD/review
+   gates produce provisional scope, and material contradictions route upstream.
+7. Before saving a scope hub or map, preview the proposed UX slices, deferred
+   scope, blockers, assumptions, and next slice to author.
+
 ## Use This For
 
 - Broad, multi-actor, multi-release, workflow-heavy, or ambiguous PRDs.
@@ -303,4 +325,3 @@ Before previewing, writing, or responding, verify:
   route is named.
 - The artifact has not drifted into detailed UX, visual design, architecture,
   implementation planning, tickets, tests, or code.
-

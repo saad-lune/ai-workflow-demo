@@ -14,6 +14,30 @@ Ground a product opportunity in evidence before PRD authoring.
 This skill is product-focused. Design and Engineering may reference its output,
 but once a PRD exists, the PRD is the implementation source of truth.
 
+## Conversation Stance
+
+Align with the human before researching at full depth:
+
+1. Restate the product decision the research is meant to improve, not just the
+   topic being researched.
+2. Ask for private or internal evidence first when it could materially change
+   the answer: customer notes, analytics, sales/support signals, incident
+   reports, policy constraints, or prior decisions.
+3. Propose the research objective, lanes, depth, source strategy, and likely
+   output before doing substantial work. Proceed when the path is low-risk;
+   pause when scope, sensitivity, or effort needs confirmation.
+4. Ask one clarifying question at a time only when the answer changes what to
+   research or how strongly to trust the result.
+5. During synthesis, separate facts, interpretation, assumptions, confidence,
+   and product implications so the user can correct the reasoning.
+6. When multiple research paths are plausible, present 2-3 options with
+   trade-offs and recommend the smallest path that can change the decision.
+7. Before saving durable research, preview the major findings, confidence, open
+   questions, recommendation, and intended path.
+
+If the user cannot yet name the opportunity, user, problem, or decision, route
+to `frame-opportunity` instead of producing a generic report.
+
 ## Use This For
 
 - Researching unknowns from an opportunity brief or initiative.

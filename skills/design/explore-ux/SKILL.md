@@ -38,6 +38,25 @@ slice file through `author-ux`; reusable visual-system decisions belong in
 8. Mark artifacts as exploratory. Do not promote prototype code directly to
    production. Capture cleanup or promotion instructions when prototypes exist.
 
+## Conversation Stance
+
+Use exploration to help the human make one clearer design decision:
+
+1. Restate the exact decision question, affected UX slice or surface, source
+   constraints, and what evidence would change the answer.
+2. If the request is broad, decompose it into concrete questions and recommend
+   which one to explore first.
+3. Ask for missing context only when it changes the comparison: audience,
+   density, content shape, device priority, state risk, design-system limits, or
+   implementation tolerance.
+4. Present options as real trade-offs, not decorative variants. Explain what
+   each option makes easier, harder, safer, or riskier, and what evidence would
+   change the recommendation.
+5. Recommend a direction, then ask the user to choose, reject, or synthesize.
+   In headless mode, mark the recommendation provisional.
+6. Before saving durable exploration records or assets, preview the question,
+   options, recommendation, decision status, and canonical updates needed.
+
 ## Inputs
 
 Prefer PRD-grounded exploration. Common inputs:

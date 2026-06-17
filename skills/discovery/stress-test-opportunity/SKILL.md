@@ -32,6 +32,28 @@ PRD and later delivery artifacts, not on `prfaq.md` or `concept-verdict.md`.
 - Prefer a credible smaller concept over a broad unsupported one.
 - Do not write durable repo artifacts until the full interview is complete and
   the user confirms saving the synthesized validation guidance.
+- Do not run the PRFAQ stages as a form. Use them as a conversation path for
+  helping the human discover what claim they can honestly defend.
+
+## Conversation Stance
+
+Use a working-backwards alignment loop:
+
+1. Invite the concept, source material, and any executive/customer constraints
+   before tightening the claim.
+2. Reflect the current customer, problem, changed outcome, smallest credible
+   V1, and hardest unsupported claim after each major stage.
+3. Ask the one question that most strengthens or breaks the concept next, with
+   options and a recommended answer when defensible. State what evidence would
+   change your recommendation.
+4. When answers are vague, propose a sharper claim or narrower wedge for the
+   user to accept, reject, or edit.
+5. Keep a visible distinction between supported, user-stated, assumed,
+   unproven, and false claims.
+6. Before recommending a verdict, challenge the core premise: is this the right
+   user, right problem, right wedge, and right time?
+7. Before saving `prfaq.md` or `concept-verdict.md`, preview the full verdict
+   guidance and ask what would make it misleading, overstated, or incomplete.
 
 ## Inputs
 

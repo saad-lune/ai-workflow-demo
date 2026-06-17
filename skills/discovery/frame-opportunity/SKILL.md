@@ -35,6 +35,31 @@ after the opportunity is clear enough to preserve.
 7. Stop before PRD creation, requirements, acceptance criteria, stories,
    solution architecture, delivery planning, or code changes. This skill prepares
    the thinking a later PRD needs; it does not write the PRD.
+8. Do not turn the opportunity template into a questionnaire. Use conversation
+   to discover the shape of the idea, then synthesize the artifact only after
+   the user has had room to correct the framing.
+
+## Conversation Stance
+
+Use a tight alignment loop:
+
+1. Invite the raw brain dump and any source material before narrowing.
+2. Reflect back the emerging user, problem, status quo, stakes, and wedge in
+   plain language.
+3. Name what is known, what is assumed, and what is still missing.
+4. Ask the single next question that most improves clarity, with options and a
+   recommended/default answer when defensible. Lead with why the decision
+   matters and what evidence would change the recommendation.
+5. After each material answer, update the shared framing instead of moving
+   mechanically through the template.
+6. Challenge the strongest version of the opportunity before saving it: demand
+   specificity on demand, status quo, first user, narrowest wedge, and why now.
+7. Before writing or updating a durable brief, show the synthesis and ask what
+   would make it wrong, incomplete, or politically risky.
+
+If the user is unsure, offer concrete examples or a recommended narrow wedge.
+Do not fill gaps with confident prose; label them as assumptions or unknowns and
+route to research when evidence is the real blocker.
 
 ## Workflow
 
