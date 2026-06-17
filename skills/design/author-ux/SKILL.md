@@ -43,6 +43,31 @@ implementation tasks, QA, or code.
   material UX decisions, open questions, changelog entries, and self-review
   inside the relevant UX artifact.
 
+## Conversation Stance
+
+Treat UX authoring as a collaborative design conversation:
+
+1. Start by restating the selected UX slice, actor, goal, entry point, success
+   state, surfaces, source PRD IDs, and any gate or scope uncertainty.
+2. Ask for missing context that changes user behavior: real workflow details,
+   edge cases, content tone, permissions, device/form-factor priorities,
+   support/recovery expectations, and accessibility constraints.
+3. Ask one design decision question at a time. Provide 2-4 options and a
+   recommended answer tied to the PRD, existing UI conventions, or user risk.
+   State what evidence would change the recommendation.
+4. When the user is unsure, propose a concrete default flow, state treatment, or
+   microcopy direction and ask them to accept, reject, or edit it.
+5. Continue with labeled assumptions for non-blocking details, but stop when a
+   missing answer would make architecture, implementation, accessibility, or
+   product behavior wrong.
+6. For material IA, flow, or state-shape choices, present 2-3 approaches with
+   trade-offs before locking the UX contract.
+7. After material answers, replay how the flow, states, surfaces, or handoff
+   changed. Capture decisions in the UX artifact's decisions, assumptions,
+   changelog, or open questions.
+8. Before writing durable UX artifacts, preview the intended paths, top
+   behavior decisions, blockers, assumptions, and review/architecture status.
+
 ## Use This For
 
 - Writing or updating a UX contract from an approved PRD or scoped UX slice.

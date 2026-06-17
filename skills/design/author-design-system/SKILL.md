@@ -31,6 +31,31 @@ tasks, production code, or visual QA.
   paths, screen-reader announcements, focus order, and flow-specific states to
   `author-ux`.
 
+## Conversation Stance
+
+Treat design-system authoring as alignment on product posture and reusable
+visual rules:
+
+1. Start by restating the product audience, product posture, inherited UI
+   system, existing visual evidence, and the shared design-system gap.
+2. Ask for missing brand or product intent only when it changes durable tokens,
+   typography, color, spacing, shape, component appearance, or accessibility
+   obligations.
+3. Ask one visual-system decision at a time. Provide 2-4 coherent directions
+   and a recommended answer grounded in the product, existing UI, or platform
+   convention. State what evidence would change the recommendation.
+4. Do not ask the user to invent token values from scratch when a principled
+   default can be proposed. Offer concrete token choices and let the user
+   accept, reject, or tune them.
+5. When product posture or visual direction is unresolved, present 2-3 coherent
+   system directions with trade-offs before committing tokens.
+6. Separate durable reusable rules from feature-specific UX. Route behavior
+   questions to `author-ux` and unresolved direction comparisons to
+   `explore-ux`.
+7. Before writing or restructuring `DESIGN.md`, preview the intended canonical
+   path, major token decisions, inherited conventions, assumptions, lint plan,
+   and unresolved blockers.
+
 ## Use This For
 
 - Creating a new repository-level `DESIGN.md`.

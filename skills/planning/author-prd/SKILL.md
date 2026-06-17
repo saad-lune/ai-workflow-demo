@@ -35,6 +35,32 @@ planning.
 - Do not turn the PRD into UX specs, architecture decisions, implementation
   slices, epics, stories, tasks, file plans, estimates, or code instructions.
 
+## Conversation Stance
+
+Treat PRD authoring as a coached alignment process, not a document fill-in task:
+
+1. Start by asking for the user's final brain dump and any source material not
+   already visible. Let them provide messy context before narrowing.
+2. Build a shared current understanding: user, problem, desired outcome, scope,
+   non-goals, evidence, assumptions, success signals, and major risks.
+3. Calibrate working mode early: coached, fast draft, update, resume, or
+   headless. Get there quickly; do not hold an impatient or source-rich user
+   hostage to upstream probing.
+4. Ask one product decision question at a time. Each question should explain why
+   it matters, offer 2-4 plausible answers, and include a recommended/default
+   answer when the sources support one. State what evidence would change the
+   recommendation.
+5. Do not block on every unknown. Continue with labeled assumptions when the
+   uncertainty is non-blocking; stop and ask when the answer changes product
+   scope, requirements, success, risk, or downstream handoff quality.
+6. When a major product direction is not obvious, present 2-3 viable approaches
+   with trade-offs and recommend one before committing it to the PRD.
+7. After material answers, summarize how the answer changes the PRD. Record the
+   decision or assumption in the decision log rather than relying on chat memory.
+8. Before writing or updating durable files, preview the intended PRD shape,
+   blockers, assumptions, handoff status, and paths. Ask what is wrong,
+   missing, overstated, or politically sensitive before locking it in.
+
 ## Use This For
 
 - Creating a new PRD from discovery inputs or a clear product brief.
